@@ -80,88 +80,88 @@ export default function Patients() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Patients</h1>
-          <p className="text-gray-600">Manage patient records and information</p>
+          <h1 className="text-2xl font-bold text-gray-900">Patients</h1>
+          <p className="text-sm text-gray-600">Manage patient records and information</p>
         </div>
-        <Button className="gap-2">
+        <Button className="gap-2 h-9">
           <Plus className="w-4 h-4" />
           Add New Patient
         </Button>
       </div>
 
       <Card>
-        <CardHeader>
-          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+        <CardHeader className="pb-4">
+          <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
             <div>
-              <CardTitle>Patient Directory</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-lg">Patient Directory</CardTitle>
+              <CardDescription className="text-sm">
                 {filteredPatients.length} patients found
               </CardDescription>
             </div>
             <div className="flex gap-2">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                 <Input
                   placeholder="Search patients..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 w-64"
+                  className="pl-8 w-56 h-9"
                 />
               </div>
-              <Button variant="outline" size="icon">
+              <Button variant="outline" size="icon" className="h-9 w-9">
                 <Filter className="w-4 h-4" />
               </Button>
             </div>
           </div>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
+          <div className="space-y-3">
             {filteredPatients.map((patient) => (
-              <div key={patient.id} className="p-6 border rounded-lg hover:bg-gray-50 transition-colors">
+              <div key={patient.id} className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
                 <div className="flex items-start justify-between">
-                  <div className="flex items-start gap-4">
-                    <Avatar className="w-12 h-12">
-                      <AvatarFallback className="bg-primary text-white text-lg">
+                  <div className="flex items-start gap-3">
+                    <Avatar className="w-10 h-10">
+                      <AvatarFallback className="bg-primary text-white text-sm">
                         {patient.name.split(' ').map(n => n[0]).join('')}
                       </AvatarFallback>
                     </Avatar>
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
-                        <h3 className="text-lg font-semibold text-gray-900">{patient.name}</h3>
+                        <h3 className="text-base font-semibold text-gray-900">{patient.name}</h3>
                         <Badge variant="secondary" className={getStatusColor(patient.status)}>
                           {patient.status}
                         </Badge>
                       </div>
-                      <p className="text-gray-600">
+                      <p className="text-sm text-gray-600">
                         {patient.age} years old • {patient.gender} • {patient.condition}
                       </p>
-                      <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 text-sm text-gray-500">
+                      <div className="flex flex-col sm:flex-row gap-1 sm:gap-4 text-xs text-gray-500">
                         <div className="flex items-center gap-1">
-                          <Phone className="w-4 h-4" />
+                          <Phone className="w-3 h-3" />
                           {patient.phone}
                         </div>
                         <div className="flex items-center gap-1">
-                          <Mail className="w-4 h-4" />
+                          <Mail className="w-3 h-3" />
                           {patient.email}
                         </div>
                         <div className="flex items-center gap-1">
-                          <MapPin className="w-4 h-4" />
+                          <MapPin className="w-3 h-3" />
                           Last visit: {patient.lastVisit}
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="flex gap-2">
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" className="h-8 text-xs">
                       View Records
                     </Button>
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" className="h-8 text-xs">
                       Schedule
                     </Button>
-                    <Button size="sm">
+                    <Button size="sm" className="h-8 text-xs">
                       Edit
                     </Button>
                   </div>
