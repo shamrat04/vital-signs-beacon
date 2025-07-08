@@ -20,7 +20,12 @@ import {
   Settings,
   Stethoscope,
   ClipboardList,
-  UserCheck
+  UserCheck,
+  CreditCard,
+  Building2,
+  BarChart3,
+  FolderOpen,
+  Shield
 } from "lucide-react"
 
 const mainItems = [
@@ -35,6 +40,14 @@ const clinicalItems = [
   { title: "Consultations", url: "/consultations", icon: Stethoscope },
   { title: "Lab Results", url: "/lab-results", icon: ClipboardList },
   { title: "Referrals", url: "/referrals", icon: UserCheck },
+  { title: "Assessment Builder", url: "/assessments", icon: Shield },
+]
+
+const businessItems = [
+  { title: "Claims Management", url: "/claims", icon: CreditCard },
+  { title: "Provider Information", url: "/providers", icon: Building2 },
+  { title: "CMS Files", url: "/cms-files", icon: FolderOpen },
+  { title: "Reports & Analytics", url: "/reports", icon: BarChart3 },
 ]
 
 const systemItems = [
@@ -56,7 +69,7 @@ export function AppSidebar() {
   return (
     <Sidebar className={isCollapsed ? "w-16" : "w-64"} collapsible="icon">
       <SidebarContent className="bg-white border-r">
-        <div className="p-4">
+        <div className="p-3">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 medical-gradient rounded-lg flex items-center justify-center">
               <Stethoscope className="w-4 h-4 text-white" />
@@ -93,6 +106,24 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {clinicalItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <NavLink to={item.url} className={getNavClass(item.url)}>
+                      <item.icon className="w-4 h-4" />
+                      {!isCollapsed && <span>{item.title}</span>}
+                    </NavLink>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>Business</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {businessItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <NavLink to={item.url} className={getNavClass(item.url)}>
