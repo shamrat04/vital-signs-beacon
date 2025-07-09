@@ -4,16 +4,21 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Layout } from "./components/Layout";
-import Dashboard from "./pages/Dashboard";
-import Patients from "./pages/Patients";
-import PatientDemographics from "./pages/PatientDemographics";
-import ClaimsManagement from "./pages/ClaimsManagement";
-import AssessmentBuilder from "./pages/AssessmentBuilder";
-import CMSFiles from "./pages/CMSFiles";
-import ProviderInformation from "./pages/ProviderInformation";
-import ReportsAnalytics from "./pages/ReportsAnalytics";
-import NotFound from "./pages/NotFound";
+import { PACELayout } from "./components/PACELayout";
+import { MemberDashboard } from "./pages/MemberDashboard";
+import { MemberSearch } from "./pages/MemberSearch";
+import { MemberClinicalNotes } from "./pages/MemberClinicalNotes";
+import { MemberAssessments } from "./pages/MemberAssessments";
+import { MemberMedications } from "./pages/MemberMedications";
+import { MemberAppointments } from "./pages/MemberAppointments";
+import { MemberEncounters } from "./pages/MemberEncounters";
+import { MemberAuthorizations } from "./pages/MemberAuthorizations";
+import { MemberReferrals } from "./pages/MemberReferrals";
+import { MemberLabs } from "./pages/MemberLabs";
+import { MemberClaims } from "./pages/MemberClaims";
+import { MemberDocuments } from "./pages/MemberDocuments";
+import { MemberReports } from "./pages/MemberReports";
+import { MemberFinance } from "./pages/MemberFinance";
 
 const queryClient = new QueryClient();
 
@@ -23,26 +28,24 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Layout>
+        <PACELayout>
           <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/patients" element={<Patients />} />
-            <Route path="/patient-demographics" element={<PatientDemographics />} />
-            <Route path="/appointments" element={<div className="text-center py-20"><h1 className="text-xl font-bold text-gray-900">Appointments</h1><p className="text-gray-600">Coming soon...</p></div>} />
-            <Route path="/records" element={<div className="text-center py-20"><h1 className="text-xl font-bold text-gray-900">Medical Records</h1><p className="text-gray-600">Coming soon...</p></div>} />
-            <Route path="/diagnostics" element={<div className="text-center py-20"><h1 className="text-xl font-bold text-gray-900">Diagnostics</h1><p className="text-gray-600">Coming soon...</p></div>} />
-            <Route path="/consultations" element={<div className="text-center py-20"><h1 className="text-xl font-bold text-gray-900">Consultations</h1><p className="text-gray-600">Coming soon...</p></div>} />
-            <Route path="/lab-results" element={<div className="text-center py-20"><h1 className="text-xl font-bold text-gray-900">Lab Results</h1><p className="text-gray-600">Coming soon...</p></div>} />
-            <Route path="/referrals" element={<div className="text-center py-20"><h1 className="text-xl font-bold text-gray-900">Referrals</h1><p className="text-gray-600">Coming soon...</p></div>} />
-            <Route path="/assessments" element={<AssessmentBuilder />} />
-            <Route path="/claims" element={<ClaimsManagement />} />
-            <Route path="/providers" element={<ProviderInformation />} />
-            <Route path="/cms-files" element={<CMSFiles />} />
-            <Route path="/reports" element={<ReportsAnalytics />} />
-            <Route path="/settings" element={<div className="text-center py-20"><h1 className="text-xl font-bold text-gray-900">Settings</h1><p className="text-gray-600">Coming soon...</p></div>} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/" element={<MemberSearch />} />
+            <Route path="/member/:memberId" element={<MemberDashboard />} />
+            <Route path="/member/:memberId/clinical-notes" element={<MemberClinicalNotes />} />
+            <Route path="/member/:memberId/assessments" element={<MemberAssessments />} />
+            <Route path="/member/:memberId/medications" element={<MemberMedications />} />
+            <Route path="/member/:memberId/appointments" element={<MemberAppointments />} />
+            <Route path="/member/:memberId/encounters" element={<MemberEncounters />} />
+            <Route path="/member/:memberId/authorizations" element={<MemberAuthorizations />} />
+            <Route path="/member/:memberId/referrals" element={<MemberReferrals />} />
+            <Route path="/member/:memberId/labs" element={<MemberLabs />} />
+            <Route path="/member/:memberId/claims" element={<MemberClaims />} />
+            <Route path="/member/:memberId/documents" element={<MemberDocuments />} />
+            <Route path="/member/:memberId/reports" element={<MemberReports />} />
+            <Route path="/member/:memberId/finance" element={<MemberFinance />} />
           </Routes>
-        </Layout>
+        </PACELayout>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
